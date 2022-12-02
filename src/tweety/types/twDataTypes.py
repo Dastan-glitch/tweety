@@ -413,9 +413,8 @@ class User(dict):
         self.rest_id = self.__dictionary.get("rest_id") if self.__dictionary.get("rest_id") else self.__dictionary.get(
             "id_str")
 
-        self.created_at = parser.parse(self.__dictionary.get("created_at")) if type_ == 2 else parser.parse(
-            self.__dictionary.get("legacy").get("created_at"))
-
+        self.created_at = self.__dictionary.get("created_at") if type_ == 2 else self.__dictionary.get("legacy").get("created_at")
+        
         self.default_profile = self.__dictionary.get("default_profile") if type_ == 2 else self.__dictionary.get(
             "legacy").get("default_profile")
 
