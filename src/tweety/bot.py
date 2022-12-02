@@ -189,7 +189,7 @@ class Twitter:
 
         try:
             for entry in r.json()['data']['threaded_conversation_with_injections']['instructions'][0]['entries']:
-                if str(entry['entryId']).split("-")[0] == "tweet":
+                if str(entry['entryId']).split("-")[0] == "tweet" and str(entry['entryId']).split("-")[1] == tweetId:
                     raw_tweet = entry['content']['itemContent']['tweet_results']['result']
                     return Tweet(r, raw_tweet, self.request, True)
         except KeyError:
